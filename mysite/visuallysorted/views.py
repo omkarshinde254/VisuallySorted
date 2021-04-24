@@ -20,21 +20,9 @@ def map_algo(name):
     print("Calling: ",name)
 
 
-def encode_str(inp_string):
-    string_bytes = inp_string.encode("ascii")
-    base64_bytes = base64.b64encode(string_bytes)
-    base64_string = base64_bytes.decode("ascii")
-    return (base64_string)
-
-def decode_str(inp_string):
-    base64_bytes = inp_string.encode("ascii")
-    string_bytes = base64.b64decode(base64_bytes)
-    op_string = sample_string_bytes.decode("ascii")
-    return(op_string)
-
 # Create your views here.
 def index(request):
-    template_name = 'html_templates\index.html'
+    template_name = 'html_templates/index.html'
     context_object = dict()
     context_object['ui_array'] = sorting_algo_map['ui_array']
     print(context_object)
