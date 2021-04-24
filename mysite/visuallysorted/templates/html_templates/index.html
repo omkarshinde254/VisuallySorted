@@ -1,12 +1,12 @@
-{% extends "html_templates\master_template.html" %}
+{% extends "html_templates/master_template.html" %}
 {% block content %}
-    {% include 'html_templates\includes\nav-bar.html' %}
+    {% include 'html_templates/includes/nav-bar.html' %}
     
     <!-- Chart Canvas -->
     <canvas id="myChart" class="chart_canvas"></canvas>
 
     <!-- Chart JS-->
     <script>
-        {% include 'Javascript\chart_script.js' %}
+        {% include 'Javascript/chart_script.js' %}
     </script>
 {% endblock %}
