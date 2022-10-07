@@ -6,6 +6,7 @@ Website providing a visual representation of sorting algorithms
 
 ### Currently available sorting algos
 * Selection Sort
+* Insertion Sort
 
 ---
 
