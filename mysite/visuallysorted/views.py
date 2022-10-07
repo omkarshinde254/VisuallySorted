@@ -10,9 +10,11 @@ from rest_framework.views import APIView
 sorting_algo_map = {
     "ui_array":
         {
-            "selection_sort": "Selection Sort"
+            "selection_sort": "Selection Sort",
+            "insertion_sort": "Insertion Sort"
         },
-    "selection_sort": sorting_algorithms.selection_sort
+    "selection_sort": sorting_algorithms.selection_sort,
+    "insertion_sort": sorting_algorithms.insertion_sort
 }
 
 # Functions
@@ -45,5 +47,5 @@ class createRandomArray(APIView):
         l_random_array = list()
         for _value in range(0,l_array_length):
             l_random_array.append(random.randint(0,99))
-        print("Ramdom Array is -->", l_random_array)
+        #print("Ramdom Array is -->", l_random_array)
         return JsonResponse({'array':l_random_array})

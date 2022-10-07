@@ -1,5 +1,6 @@
 var g_array = []
 var g_sorted_array = []
+var g_color_array = []
 const timer = ms => new Promise(res => setTimeout(res, ms))
 var ctx = document.getElementById('myChart');
 M.AutoInit();
@@ -44,16 +45,25 @@ function removeData(chart) {
     chart.update();
 }
 
-function addData(chart, label, data) {
+function addData(chart, label, data, idx1=null, idx2=null) {
     //console.log("Repopulating Chart data using: "+JSON.stringify(g_array))
     removeData(chart)
     chart.data.labels = label;
     chart.data.datasets[0].data = data;
+    clr = new Array(data.length)
+    clr[idx1] = '#1982c4'
+    clr[idx2] = '#ff595e'
+    chart.data.datasets[0].backgroundColor = clr
     chart.update();
 }
 
 function resetArray(){
     addData(myChart, g_array, g_array)
+}
+
+function resetArray_afterSort(chart){
+    chart.data.datasets[0].backgroundColor = []
+    chart.update();
 }
 
 function createRandomArray() {
@@ -91,15 +101,21 @@ async function sort_n_sleep(){
     for(var i=0; i<g_sorted_array.length; i++) {
         //console.log("Now processing");
         //console.log(g_sorted_array[i]);
-        addData(myChart,g_sorted_array[i],g_sorted_array[i]);
-        await timer (100);
+        addData(myChart,g_sorted_array[i][0],g_sorted_array[i][0], g_sorted_array[i][1][0], g_sorted_array[i][1][1]);
+        await timer (50);
     }
     M.toast({html: 'Sorting Completed!'})
+    resetArray_afterSort(myChart)
 }
 
 
 function initiate_sorting(){
     algo_name = document.getElementById('dropdown').value
+    //console.log(algo_name);
+    if ( !algo_name){
+        M.toast({html: 'Please select a sorting algorithm!'})
+        return;
+    }
     var url = "http://localhost:8000/sort/?sort=" + algo_name + "&ary=" + g_array.toString()
     console.log("Call Sorting Algo- "+url)
 
@@ -116,6 +132,7 @@ function initiate_sorting(){
             response.json().then(function (data) {
                 console.log("Recieved Sorted Array !");
                 g_sorted_array = data['sorted_array']
+                g_color_array = data['sorted_array']
                 sort_n_sleep();
             });
 
