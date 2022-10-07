@@ -41,7 +41,6 @@ def insertion_sort(array):
                 j = j - 1
                 return_list.append([list(array),[j+1,j]])
 
-    #print("Final Array-> ", array)
     return return_list
 
 
