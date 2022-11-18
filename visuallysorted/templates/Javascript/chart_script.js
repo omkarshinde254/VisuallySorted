@@ -72,7 +72,7 @@ function resetArray_afterSort(chart){
 function createRandomArray() {
     array_length = document.getElementById('array_length').value
     var q = 'array_length='+array_length;
-    var url = "http://localhost:8000/createRandomArray/?" + q
+    var url = "https://visualsorter.herokuapp.com/createRandomArray/?" + q
 
     fetch(url)
         .then(
@@ -129,7 +129,7 @@ function initiate_sorting(){
         M.toast({html: 'Please select a sorting algorithm!'})
         return;
     }
-    var url = "http://localhost:8000/sort/?sort=" + algo_name + "&ary=" + g_array.toString()
+    var url = "https://visualsorter.herokuapp.com/sort/?sort=" + algo_name + "&ary=" + g_array.toString()
     console.log("Call Sorting Algo- "+url)
 
     fetch(url)
