@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'qtu7nql3w657=c=@y)da)t4y-x68-74%f1c=i!59i3o^tnb*8n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['visualsorter.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['visualsorter.herokuapp.com', '127.0.0.1', 'sort.herokuapp.com']
 
 
 # Application definition
